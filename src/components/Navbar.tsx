@@ -18,15 +18,12 @@ export default function Navbar() {
     const t = translations[language];
 
     return (
-        <header className="sticky bg-[#a3d9ff] dark:bg-dusk-gradient w-full top-0 z-50 md:pr-40 md:pl-40 mx-auto pb-15 flex items-center justify-between px-6 py-2 snap-start">
-            {/* Logo */}
+        <header className="sticky min-h-20 bg-[#a3d9ff] dark:bg-dusk-gradient w-full top-0 z-50 md:pr-40 md:pl-40 mx-auto pb-15 flex items-center justify-between px-6 md:py-2 snap-start">
             <Link href="/" className="text-xl font-bold select-none flex items-center gap-2">
                 <span className="text-blue-500">Công</span>
                 <span className="text-blue-500">Thạch</span>
-                <span className="text-violet-500 ml-2">Frontend Developer</span>
             </Link>
 
-            {/* Menu giữa - Desktop */}
             <nav className="hidden md:flex gap-6 text-md font-medium text-black dark:text-white">
                 <Link
                     href="/"
@@ -48,7 +45,6 @@ export default function Navbar() {
                 </Link>
             </nav>
 
-            {/* Icon phải */}
             <div className="flex items-center gap-4 text-black dark:text-white">
                 <LanguageToggle />
                 <ThemeToggle />
@@ -56,7 +52,7 @@ export default function Navbar() {
 
                     target="_blank"
                     rel="noopener noreferrer"
-                    className="block"
+                    className="hidden md:block"
                 >
                     <Image
                         src="/chongcam.png"
@@ -67,7 +63,6 @@ export default function Navbar() {
                         priority
                     />
                 </a>
-                {/* Mobile menu button */}
                 <button
                     className="md:hidden hover:opacity-80"
                     onClick={() => setIsMenuOpen(!isMenuOpen)}
@@ -76,7 +71,6 @@ export default function Navbar() {
                 </button>
             </div>
 
-            {/* Mobile Menu */}
             <AnimatePresence>
                 {isMenuOpen && (
                     <motion.div

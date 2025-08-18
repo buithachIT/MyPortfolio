@@ -12,12 +12,10 @@ export default function ThemeToggle() {
     const { theme, setTheme } = useTheme();
     const [mounted, setMounted] = useState(false);
 
-    // useEffect only runs on the client, so now we can safely show the UI
     useEffect(() => {
         setMounted(true);
     }, []);
 
-    // Prevent hydration mismatch by rendering a default button
     if (!mounted) {
         return (
             <button className="hover:opacity-80">

@@ -13,19 +13,21 @@ export const translations = {
       role: "Frontend Developer – UI/UX Lover",
       from: "đến từ: SGU",
       skills: "Kỹ năng",
+      experience: "Kinh nghiệm",
       contact: "Liên hệ",
     },
     about: {
       title: "Xin chào, Tôi là",
       titleHighlight: "Bùi Công Thạch",
       titleEnd: "",
-      description: `Mình là một lập trình viên Frontend với niềm đam mê xây dựng giao diện web hiện đại, tối ưu trải nghiệm người dùng.<br/>
-Mình có kinh nghiệm với React, Next.js, Tailwind CSS và các công nghệ web mới.<br/>
-mình luôn học hỏi, sáng tạo và hướng tới sản phẩm chất lượng cao.<br/>
+      description: `Mình là một lập trình viên Fullstack với niềm đam mê xây dựng các sản phẩm web hiện đại, tối ưu trải nghiệm người dùng từ frontend đến backend.<br/>
+Có kinh nghiệm với React, Next.js, Tailwind CSS, Node.js và các công nghệ web mới.<br/>
+Luôn chủ động học hỏi, sáng tạo và hướng tới những sản phẩm chất lượng cao, tối ưu hiệu năng.<br/>
 <br/>
-Ngoài ra mình cũng thích kết giao thêm với những người bạn mới và mình tự tin có thể giao tiếp và có thể hòa nhập tốt với những môi trường mới.
-<br/><br/>
-Liên hệ với mình qua email hoặc các mạng xã hội bên dưới!`,
+Ngoài ra, mình thích mở rộng mối quan hệ, giao lưu và dễ dàng hòa nhập trong những môi trường làm việc mới.<br/>
+<br/>
+📩 Liên hệ với mình qua email hoặc các mạng xã hội bên dưới!
+`,
     },
     skills: {
       title: "Kỹ năng của mình",
@@ -49,6 +51,7 @@ Liên hệ với mình qua email hoặc các mạng xã hội bên dưới!`,
       email: "Email của bạn",
       message: "Tin nhắn của bạn",
       send: "Gửi tin nhắn",
+      sending: "Đang gửi...",
       success: "Tin nhắn đã được gửi thành công!",
       error: "Có lỗi xảy ra. Vui lòng thử lại sau.",
     },
@@ -56,6 +59,17 @@ Liên hệ với mình qua email hoặc các mạng xã hội bên dưới!`,
       question: "Một chút chill không nè?",
       play: "Bật nhạc",
       pause: "Tắt nhạc",
+    },
+    experience: {
+      title: "Kinh nghiệm làm việc",
+      subtitle: "Hành trình chuyên môn và những thành tựu của tôi",
+      viewMore: "Xem thêm",
+      technologies: "Công nghệ sử dụng",
+      achievements: "Thành tựu chính",
+      workTogether: "Hãy làm việc cùng nhau",
+      education: "Học tập",
+      internship: "Thực tập",
+      freelancer: "Freelancer",
     },
   },
   en: {
@@ -72,6 +86,7 @@ Liên hệ với mình qua email hoặc các mạng xã hội bên dưới!`,
       role: "Frontend Developer – UI/UX Lover",
       from: "-come from-: SGU",
       skills: "My Skills",
+      experience: "Experience",
       contact: "Contact",
     },
     about: {
@@ -108,6 +123,7 @@ I also enjoy making new friends and take pride in my strong communication skills
       email: "Your Email",
       message: "Your Message",
       send: "Send Message",
+      sending: "Sending...",
       success: "Message sent successfully!",
       error: "An error occurred. Please try again later.",
     },
@@ -115,6 +131,17 @@ I also enjoy making new friends and take pride in my strong communication skills
       question: "Some relaxing music?",
       play: "Play music",
       pause: "Pause music",
+    },
+    experience: {
+      title: "Work Experience",
+      subtitle: "My professional journey and achievements",
+      viewMore: "View More",
+      technologies: "Technologies Used",
+      achievements: "Key Achievements",
+      workTogether: "Let's Work Together",
+      education: "Education",
+      internship: "Internship",
+      freelancer: "Freelancer",
     },
   },
 };

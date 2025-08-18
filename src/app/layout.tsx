@@ -2,9 +2,11 @@ import type { Metadata } from "next";
 import { Outfit } from "next/font/google";
 import { ThemeProvider } from "next-themes";
 import "../styles/global.css";
-import Navbar from '@/components/layout/Navbar';
+import Navbar from '@/components/Navbar';
 import { LanguageProvider } from "@/contexts/LanguageContext";
 import { Analytics } from '@vercel/analytics/next';
+import ProgressBarProvider from '@/contexts/ProgressBarProvider';
+
 const outfit = Outfit({
   subsets: ["latin"],
   weight: ["400", "600", "700"],
@@ -30,7 +32,8 @@ export default function RootLayout({
         <ThemeProvider attribute="class" defaultTheme="system" enableSystem>
           <LanguageProvider>
             <Navbar />
-            {children}
+            <ProgressBarProvider>{children}</ProgressBarProvider>
+
             <Analytics />
           </LanguageProvider>
         </ThemeProvider>

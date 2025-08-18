@@ -12,8 +12,10 @@ export default function AboutSection() {
     const t = translations[language];
 
     return (
-        <section id="about" className="relative max-w-4xl mx-auto py-16 px-8 flex flex-col md:flex-row items-center gap-10">
-            {/* Avatar + Info */}
+        <section
+            id="about"
+            className="relative max-w-4xl mx-auto py-16 px-8 flex flex-col md:flex-row items-center gap-10 overflow-hidden"
+        >
             <motion.div
                 initial={{ opacity: 0, x: -40 }}
                 whileInView={{ opacity: 1, x: 0 }}
@@ -25,7 +27,7 @@ export default function AboutSection() {
                     width={140}
                     height={140}
                     alt="Avatar"
-                    className="rounded-full mr-10 border-4 border-primary shadow-lg hover:scale-105 transition-transform"
+                    className="rounded-full  border-4 border-primary shadow-lg hover:scale-105 transition-transform"
                 />
                 <h2 className="text-2xl font-bold mt-2 text-dark dark:text-darktext">{t.about.titleHighlight}</h2>
                 <p className="text-primary font-semibold">Frontend Developer</p>

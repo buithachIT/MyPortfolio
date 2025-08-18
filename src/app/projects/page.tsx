@@ -1,6 +1,6 @@
 'use client';
 
-import Projects from '@/app/home/sections/Projects';
+import Projects from '@/components/project/Projects';
 
 export default function ProjectsPage() {
     return (
