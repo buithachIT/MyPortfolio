@@ -1,8 +1,7 @@
 'use client';
 
 import { motion } from 'framer-motion';
-import { Mail, Phone, MapPin, Github, Linkedin, Send, CheckCircle, AlertCircle } from 'lucide-react';
-import { useState } from 'react';
+import { Mail, Phone, MapPin, Github, Linkedin, Send } from 'lucide-react';
 import { useLanguage } from '@/contexts/LanguageContext';
 import { translations } from '@/translations';
 
@@ -10,51 +9,6 @@ const Contact = () => {
     const { language } = useLanguage();
     const t = translations[language];
 
-    const [formData, setFormData] = useState({
-        name: '',
-        email: '',
-        message: ''
-    });
-    const [isSubmitting, setIsSubmitting] = useState(false);
-    const [submitStatus, setSubmitStatus] = useState<'idle' | 'success' | 'error'>('idle');
-
-    const handleInputChange = (e: React.ChangeEvent<HTMLInputElement | HTMLTextAreaElement>) => {
-        const { name, value } = e.target;
-        setFormData(prev => ({
-            ...prev,
-            [name]: value
-        }));
-    };
-
-    const handleSubmit = async (e: React.FormEvent) => {
-        e.preventDefault();
-        setIsSubmitting(true);
-        setSubmitStatus('idle');
-
-        try {
-            const response = await fetch('/api/send', {
-                method: 'POST',
-                headers: {
-                    'Content-Type': 'application/json',
-                },
-                body: JSON.stringify(formData),
-            });
-
-            const result = await response.json();
-
-            if (response.ok && result.success) {
-                setSubmitStatus('success');
-                setFormData({ name: '', email: '', message: '' });
-            } else {
-                setSubmitStatus('error');
-            }
-        } catch (error) {
-            console.error('Email sending failed:', error);
-            setSubmitStatus('error');
-        } finally {
-            setIsSubmitting(false);
-        }
-    };
     return (
         <div className="min-h-screen bg-gradient-to-b from-[#f9fafb] to-[#e0e7ef] dark:from-darkbg dark:to-[#22223b] py-20">
             <div className="container mx-auto px-4">
@@ -80,92 +34,50 @@ const Contact = () => {
                         transition={{ duration: 0.5, delay: 0.2 }}
                         className="bg-white dark:bg-darkbg rounded-2xl shadow-xl p-8"
                     >
-                        <form onSubmit={handleSubmit} className="space-y-6">
+                        <form className="space-y-6">
                             <div>
                                 <label htmlFor="name" className="block text-sm font-medium text-gray-700 dark:text-gray-300 mb-2">
-                                    {t.contact?.name || "Your Name"}
+                                    {t.contact?.name || 'Your Name'}
                                 </label>
                                 <input
                                     type="text"
                                     id="name"
                                     name="name"
-                                    value={formData.name}
-                                    onChange={handleInputChange}
-                                    required
                                     className="w-full px-4 py-3 rounded-lg border border-gray-300 dark:border-gray-600 bg-white dark:bg-darkbg text-gray-900 dark:text-white focus:ring-2 focus:ring-primary focus:border-transparent transition"
-                                    placeholder={t.contact?.name || "John Doe"}
+                                    placeholder={t.contact?.name || 'John Doe'}
                                 />
                             </div>
                             <div>
                                 <label htmlFor="email" className="block text-sm font-medium text-gray-700 dark:text-gray-300 mb-2">
-                                    {t.contact?.email || "Email Address"}
+                                    {t.contact?.email || 'Email Address'}
                                 </label>
                                 <input
                                     type="email"
                                     id="email"
                                     name="email"
-                                    value={formData.email}
-                                    onChange={handleInputChange}
-                                    required
                                     className="w-full px-4 py-3 rounded-lg border border-gray-300 dark:border-gray-600 bg-white dark:bg-darkbg text-gray-900 dark:text-white focus:ring-2 focus:ring-primary focus:border-transparent transition"
-                                    placeholder={t.contact?.email || "john@example.com"}
+                                    placeholder={t.contact?.email || 'john@example.com'}
                                 />
                             </div>
                             <div>
                                 <label htmlFor="message" className="block text-sm font-medium text-gray-700 dark:text-gray-300 mb-2">
-                                    {t.contact?.message || "Message"}
+                                    {t.contact?.message || 'Message'}
                                 </label>
                                 <textarea
                                     id="message"
                                     name="message"
                                     rows={6}
-                                    value={formData.message}
-                                    onChange={handleInputChange}
-                                    required
                                     className="w-full px-4 py-3 rounded-lg border border-gray-300 dark:border-gray-600 bg-white dark:bg-darkbg text-gray-900 dark:text-white focus:ring-2 focus:ring-primary focus:border-transparent transition resize-none"
-                                    placeholder={t.contact?.message || "Your message here..."}
+                                    placeholder={t.contact?.message || 'Your message here...'}
                                 ></textarea>
                             </div>
 
-                            {/* Status Messages */}
-                            {submitStatus === 'success' && (
-                                <motion.div
-                                    initial={{ opacity: 0, y: -10 }}
-                                    animate={{ opacity: 1, y: 0 }}
-                                    className="flex items-center gap-2 p-3 bg-green-100 dark:bg-green-900/20 text-green-700 dark:text-green-400 rounded-lg"
-                                >
-                                    <CheckCircle size={20} />
-                                    <span>{t.contact?.success || "Message sent successfully!"}</span>
-                                </motion.div>
-                            )}
-
-                            {submitStatus === 'error' && (
-                                <motion.div
-                                    initial={{ opacity: 0, y: -10 }}
-                                    animate={{ opacity: 1, y: 0 }}
-                                    className="flex items-center gap-2 p-3 bg-red-100 dark:bg-red-900/20 text-red-700 dark:text-red-400 rounded-lg"
-                                >
-                                    <AlertCircle size={20} />
-                                    <span>{t.contact?.error || "An error occurred. Please try again later."}</span>
-                                </motion.div>
-                            )}
-
                             <button
-                                type="submit"
-                                disabled={isSubmitting}
-                                className="w-full bg-primary text-white py-3 px-6 rounded-lg hover:bg-primary/90 disabled:opacity-50 disabled:cursor-not-allowed transition font-medium flex items-center justify-center gap-2"
+                                type="button"
+                                className="w-full bg-primary text-white py-3 px-6 rounded-lg hover:bg-primary/90 transition font-medium flex items-center justify-center gap-2"
                             >
-                                {isSubmitting ? (
-                                    <>
-                                        <div className="w-5 h-5 border-2 border-white border-t-transparent rounded-full animate-spin"></div>
-                                        {t.contact?.sending || "Sending..."}
-                                    </>
-                                ) : (
-                                    <>
-                                        <Send size={20} />
-                                        {t.contact?.send || "Send Message"}
-                                    </>
-                                )}
+                                <Send size={20} />
+                                {t.contact?.send || 'Send Message'}
                             </button>
                         </form>
                     </motion.div>
@@ -251,6 +163,7 @@ const Contact = () => {
                 </div>
             </div>
         </div>
-    )
-}
+    );
+};
+
 export default Contact;
