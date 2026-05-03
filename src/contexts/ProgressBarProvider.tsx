@@ -1,6 +1,5 @@
 "use client";
 
-// @ts-ignore
 import "@bprogress/core/css";
 import { ProgressProvider } from "@bprogress/next/app";
 import React from "react";
