@@ -17,21 +17,19 @@ export function LanguageProvider({ children }: { children: ReactNode }) {
 
     useEffect(() => {
         setMounted(true);
-        const savedLanguage = localStorage.getItem('language') as Language;
-        if (savedLanguage) {
-            setLanguage(savedLanguage);
+        if (typeof window !== 'undefined') {
+            const savedLanguage = window.localStorage.getItem('language') as Language;
+            if (savedLanguage) {
+                setLanguage(savedLanguage);
+            }
         }
     }, []);
 
     useEffect(() => {
-        if (mounted) {
-            localStorage.setItem('language', language);
+        if (mounted && typeof window !== 'undefined') {
+            window.localStorage.setItem('language', language);
         }
     }, [language, mounted]);
-
-    if (!mounted) {
-        return null;
-    }
 
     return (
         <LanguageContext.Provider value={{ language, setLanguage }}>

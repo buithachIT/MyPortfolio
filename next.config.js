@@ -1,6 +1,9 @@
 /** @type {import('next').NextConfig} */
 const nextConfig = {
   output: "standalone",
+  experimental: {
+    instrumentationHook: true,
+  },
   images: {
     domains: ["placehold.co", "raw.githubusercontent.com", "github.com"],
     unoptimized: true,
