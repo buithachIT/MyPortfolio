@@ -55,90 +55,96 @@ export default function Projects() {
         {projects.map((project, idx) => (
           <motion.div
             key={project.title}
-            className="relative transform-gpu bg-white dark:bg-darkbg rounded-2xl shadow-lg overflow-hidden group border border-gray-200 dark:border-gray-700 hover:border-primary/30 transition-colors hover:shadow-xl"
-            style={{ willChange: "transform" }}
             initial={{ opacity: 0, y: 24 }}
             whileInView={{ opacity: 1, y: 0 }}
             viewport={{ once: true, amount: 0.2 }}
             transition={{ duration: 0.4, delay: idx * 0.08 }}
-            whileHover={{ scale: 1.015, y: -3 }}
-            whileTap={{ scale: 0.99 }}
           >
-            <div className="h-48 w-full overflow-hidden bg-[#2563eb] flex items-center justify-center relative">
-              {(idx === 0 || idx === 1) && (
-                <div className="absolute top-3 left-3 z-10">
-                  <span className="px-2 py-1 bg-yellow-500 text-black text-xs font-bold rounded-full shadow-lg">
-                    FEATURED
-                  </span>
-                </div>
-              )}
-              <Image
-                src={project.image}
-                alt={project.title}
-                width={600}
-                height={400}
-                className="object-contain w-full h-full"
-                draggable={false}
-                priority={idx === 0}
-              />
-            </div>
-            <div className="p-6 flex flex-col gap-2">
-              <h3 className="text-xl font-semibold text-black dark:text-white mb-1">
-                {project.title}
-              </h3>
-              <p className="text-gray-600 dark:text-gray-300 text-sm mb-2 line-clamp-3">
-                {project.description}
-              </p>
-              <div className="flex flex-wrap gap-2 mb-3">
-                {project.tech.map((t) => (
-                  <span
-                    key={t}
-                    className="px-2 py-0.5 bg-primary/10 text-primary text-xs rounded font-medium"
-                  >
-                    {t}
-                  </span>
-                ))}
-              </div>
-              {project.features && (
-                <div className="mb-3">
-                  <h4 className="text-xs font-semibold text-gray-700 dark:text-gray-300 mb-1">
-                    Key Features:
-                  </h4>
-                  <div className="flex flex-wrap gap-1">
-                    {project.features.map((feature) => (
-                      <span
-                        key={feature}
-                        className="px-2 py-0.5 bg-gray-100 dark:bg-gray-700 text-gray-600 dark:text-gray-400 text-xs rounded"
-                      >
-                        {feature}
-                      </span>
-                    ))}
+            <motion.div
+              className="relative bg-white dark:bg-darkbg rounded-2xl shadow-lg overflow-hidden group border border-gray-200 dark:border-gray-700 hover:border-primary/30 transition-colors hover:shadow-xl h-full"
+              whileHover={{ scale: 1.015, y: -3 }}
+              whileTap={{ scale: 0.99 }}
+              transition={{
+                type: "spring",
+                stiffness: 320,
+                damping: 24,
+                mass: 0.6,
+              }}
+            >
+              <div className="h-48 w-full overflow-hidden bg-[#2563eb] flex items-center justify-center relative">
+                {(idx === 0 || idx === 1) && (
+                  <div className="absolute top-3 left-3 z-10">
+                    <span className="px-2 py-1 bg-yellow-500 text-black text-xs font-bold rounded-full shadow-lg">
+                      FEATURED
+                    </span>
                   </div>
+                )}
+                <Image
+                  src={project.image}
+                  alt={project.title}
+                  width={600}
+                  height={400}
+                  className="object-contain w-full h-full"
+                  draggable={false}
+                  priority={idx === 0}
+                />
+              </div>
+              <div className="p-6 flex flex-col gap-2">
+                <h3 className="text-xl font-semibold text-black dark:text-white mb-1">
+                  {project.title}
+                </h3>
+                <p className="text-gray-600 dark:text-gray-300 text-sm mb-2 line-clamp-3">
+                  {project.description}
+                </p>
+                <div className="flex flex-wrap gap-2 mb-3">
+                  {project.tech.map((t) => (
+                    <span
+                      key={t}
+                      className="px-2 py-0.5 bg-primary/10 text-primary text-xs rounded font-medium"
+                    >
+                      {t}
+                    </span>
+                  ))}
                 </div>
-              )}
-              <div className="flex gap-3 mt-auto">
-                {project.demo && (
+                {project.features && (
+                  <div className="mb-3">
+                    <h4 className="text-xs font-semibold text-gray-700 dark:text-gray-300 mb-1">
+                      Key Features:
+                    </h4>
+                    <div className="flex flex-wrap gap-1">
+                      {project.features.map((feature) => (
+                        <span
+                          key={feature}
+                          className="px-2 py-0.5 bg-gray-100 dark:bg-gray-700 text-gray-600 dark:text-gray-400 text-xs rounded"
+                        >
+                          {feature}
+                        </span>
+                      ))}
+                    </div>
+                  </div>
+                )}
+                <div className="flex gap-3 mt-auto">
+                  {project.demo && (
+                    <a
+                      href={project.demo}
+                      target="_blank"
+                      rel="noopener noreferrer"
+                      className="px-3 py-1 bg-primary text-white rounded hover:bg-primary/80 transition text-xs font-semibold shadow"
+                    >
+                      Live Demo
+                    </a>
+                  )}
                   <a
-                    href={project.demo}
+                    href={project.github}
                     target="_blank"
                     rel="noopener noreferrer"
-                    className="px-3 py-1 bg-primary text-white rounded hover:bg-primary/80 transition text-xs font-semibold shadow"
+                    className="px-3 py-1 border border-primary text-primary rounded hover:bg-primary hover:text-white transition text-xs font-semibold"
                   >
-                    Live Demo
+                    GitHub
                   </a>
-                )}
-                <a
-                  href={project.github}
-                  target="_blank"
-                  rel="noopener noreferrer"
-                  className="px-3 py-1 border border-primary text-primary rounded hover:bg-primary hover:text-white transition text-xs font-semibold"
-                >
-                  GitHub
-                </a>
+                </div>
               </div>
-            </div>
-            {/* Overlay effect on hover */}
-            <div className="absolute inset-0 bg-black/10 dark:bg-black/30 opacity-0 group-hover:opacity-100 transition-opacity duration-300 pointer-events-none" />
+            </motion.div>
           </motion.div>
         ))}
       </div>
