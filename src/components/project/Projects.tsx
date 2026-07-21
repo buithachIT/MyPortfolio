@@ -19,7 +19,7 @@ export default function Projects() {
       id="projects"
       className="min-h-screen bg-gradient-to-b from-[#f9fafb] to-[#e0e7ef] dark:from-darkbg dark:to-[#22223b] py-20 px-6"
     >
-      {/* GitHub Profile Intro */}
+      w{" "}
       <div className="flex flex-col items-center mb-10">
         <Image
           src={GITHUB_PROFILE.avatar}

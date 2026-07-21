@@ -1,5 +1,4 @@
 # Dockerfile
-# syntax=docker/dockerfile:1
 FROM node:20-alpine AS base
 WORKDIR /app
 
@@ -19,7 +18,6 @@ FROM node:20-alpine AS runner
 WORKDIR /app
 ENV NODE_ENV=production
 ENV PORT=3000
-ENV NODE_OPTIONS=
 
 RUN addgroup -S nodejs && adduser -S nextjs -G nodejs
 
@@ -27,7 +25,10 @@ COPY --from=builder /app/public ./public
 COPY --from=builder /app/.next/standalone ./
 COPY --from=builder /app/.next/static ./.next/static
 
+# ✅ Copy .env nếu cần
+COPY .env.production .env.production
+
 USER nextjs
 
 EXPOSE 3000
-CMD ["sh", "-c", "unset NODE_OPTIONS; node server.js"]
+CMD ["node", "server.js"]
